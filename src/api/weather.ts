@@ -1,4 +1,4 @@
-const API_KEY = "08517945ddd9ff3712c6cf7abd070513";
+const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5"; // Base API URL
 
 // Type for current weather
@@ -7,6 +7,14 @@ export interface WeatherData {
     temperature: number;
     description: string;
     icon: string;
+    feelsLike: number;
+    humidity: number;
+    tempMin: number;
+    tempMax: number;
+    sunrise: number;
+    sunset: number;
+    visibility: number;
+    windSpeed: number
 }
 
 // Type for forecast weather item
@@ -15,6 +23,8 @@ export interface ForecastItem {
     temp: number;
     description: string;
     icon: string;
+    tempMin: number;
+    tempMax: number;
 }
 
 // Fetch current weather for a city
@@ -26,11 +36,21 @@ export const fetchWeather = async (city: string): Promise<WeatherData> => {
 
     const data = await res.json();
 
+    // console.log(data);
+
     return {
         city: data.name,
         temperature: data.main.temp,
         description: data.weather[0].description,
         icon: data.weather[0].icon,
+        feelsLike: data.main['feels_like'],
+        humidity: data.main.humidity,
+        tempMin: data.main['temp_min'],
+        tempMax: data.main['temp_max'],
+        sunrise: data.sys.sunrise,
+        sunset: data.sys.sunset,
+        visibility: data.visibility,
+        windSpeed: data.wind.speed
     };
 };
 
@@ -48,12 +68,16 @@ export const fetchForecast = async (city: string): Promise<ForecastItem[]> => {
     // OpenWeatherMap gives 3-hour steps → pick 12:00 pm data for each day
     data.list.forEach((item: any) => {
         const [date, hour] = item.dt_txt.split(" ");
+
+        console.log(item);
         if (hour === "12:00:00") {
             dailyData[date] = {
                 date,
                 temp: item.main.temp,
                 description: item.weather[0].description,
                 icon: item.weather[0].icon,
+                tempMin: item.main['temp_min'],
+                tempMax: item.main['temp_max'],
             };
         }
     });

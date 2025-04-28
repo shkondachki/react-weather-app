@@ -1,0 +1,62 @@
+@import '../styles/variables';
+
+/* Search area */
+h1 {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.search {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid $gray;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border-color: $primary-dark;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    font-size: 1rem;
+    background: $gray-light;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+
+    img {
+      width: 18px;
+      height: 18px;
+      position: relative;
+      top: -1px;
+    }
+
+    &:hover {
+      background: $gray-lighter;
+    }
+  }
+}
+
+
+/* Error */
+.error {
+  color: $error-color;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}

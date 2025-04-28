@@ -1,0 +1,32 @@
+@import '../styles/variables';
+
+.sidebar {
+  background-color: $white;
+  padding: 40px 40px 40px;
+
+  .currentWeather {
+    img {
+      width: 280px;
+    }
+
+    .currentTemp {
+      font-size: 60px;
+      line-height: 1.4em;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .city {
+      font-size: 31px;
+      line-height: 1.3em;
+      font-weight: 400;
+      margin-bottom: 15px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $gray-light;
+    }
+
+    .weatherDescription {
+      text-transform: capitalize;
+    }
+  }
+}
