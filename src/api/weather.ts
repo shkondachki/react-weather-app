@@ -4,13 +4,13 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5"; // Base API URL
 // Type for current weather
 export interface WeatherData {
     city: string;
+    country: string;
     temperature: number;
     description: string;
     icon: string;
     feelsLike: number;
     humidity: number;
-    tempMin: number;
-    tempMax: number;
+    clouds: number;
     sunrise: number;
     sunset: number;
     visibility: number;
@@ -36,17 +36,17 @@ export const fetchWeather = async (city: string): Promise<WeatherData> => {
 
     const data = await res.json();
 
-    // console.log(data);
+    console.log(data);
 
     return {
         city: data.name,
+        country: data.sys.country,
         temperature: data.main.temp,
         description: data.weather[0].description,
         icon: data.weather[0].icon,
-        feelsLike: data.main['feels_like'],
+        feelsLike: data.main.feels_like,
         humidity: data.main.humidity,
-        tempMin: data.main['temp_min'],
-        tempMax: data.main['temp_max'],
+        clouds: data.clouds.all,
         sunrise: data.sys.sunrise,
         sunset: data.sys.sunset,
         visibility: data.visibility,
@@ -63,24 +63,37 @@ export const fetchForecast = async (city: string): Promise<ForecastItem[]> => {
 
     const data = await res.json();
 
-    const dailyData: Record<string, ForecastItem> = {};
-
     // OpenWeatherMap gives 3-hour steps → pick 12:00 pm data for each day
+    const dailyData: { [date: string]: any } = {};
+
     data.list.forEach((item: any) => {
         const [date, hour] = item.dt_txt.split(" ");
 
-        console.log(item);
-        if (hour === "12:00:00") {
+        if (!dailyData[date]) {
             dailyData[date] = {
                 date,
-                temp: item.main.temp,
+                tempMin: item.main.temp_min,
+                tempMax: item.main.temp_max,
+                temp: item.main.temp, // We'll override it later with 12:00 if available
                 description: item.weather[0].description,
                 icon: item.weather[0].icon,
-                tempMin: item.main['temp_min'],
-                tempMax: item.main['temp_max'],
+                hasNoonData: hour === "12:00:00",
             };
+        } else {
+            // Update min and max
+            dailyData[date].tempMin = Math.min(dailyData[date].tempMin, item.main.temp_min);
+            dailyData[date].tempMax = Math.max(dailyData[date].tempMax, item.main.temp_max);
+
+            // Prefer the 12:00 data for display (nice middle of the day snapshot)
+            if (hour === "12:00:00") {
+                dailyData[date].temp = item.main.temp;
+                dailyData[date].description = item.weather[0].description;
+                dailyData[date].icon = item.weather[0].icon;
+                dailyData[date].hasNoonData = true;
+            }
         }
     });
+
 
     // Return only 5 days
     return Object.values(dailyData).slice(0, 5);

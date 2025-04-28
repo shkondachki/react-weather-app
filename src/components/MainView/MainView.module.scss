@@ -1,8 +1,16 @@
 // MainView.module.scss
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .main {
-  padding: 40px;
+  padding: 40px 45px 50px;
+  background: $gray-lighter;
+
+  .inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
   .topNav {
     display: flex;
@@ -13,6 +21,12 @@
       font-size: 31px;
       line-height: 1.3em;
       font-weight: 400;
+      display: flex;
+      gap: 20px;
+
+      img {
+        width: 40px;
+      }
     }
 
     .symbol {
@@ -31,22 +45,16 @@
 
   .forecastGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem;
     margin-bottom: 50px;
 
-    //.forecastCard {
-    //  background: #fff;
-    //  padding: 1rem;
-    //  border-radius: 8px;
-    //  text-align: center;
-    //  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    //  transition: transform 0.3s;
-    //}
+    @include desktop-and-above {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
 
-    //.forecastCard:hover {
-    //  transform: translateY(-5px);
-    //}
+    @include desktop-and-below {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
 

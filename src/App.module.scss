@@ -4,18 +4,19 @@
 /* General page layout */
 .app {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
+  //max-width: 600px;
+  //margin: 2rem auto;
   background: $white;
-  border-radius: $radius-large;
+  //border-radius: $radius-large;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+  min-height: 100vh;
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  background-color: $gray-lighter;
+  //&.withCity {
+  //  max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  //}
 }
 
 

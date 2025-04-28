@@ -20,7 +20,7 @@ export const SearchLocation = ({
             <div className={styles.search}>
                 <input
                     type="text"
-                    placeholder="Enter city"
+                    placeholder="Search for a city.."
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     onKeyDown={(e) => {

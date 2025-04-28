@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-world-flags": "^1.6.0",
     "classnames": "^2.5.1",
     "framer-motion": "^12.9.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-world-flags": "^1.6.0",
     "sass": "^1.87.0"
   },
   "devDependencies": {

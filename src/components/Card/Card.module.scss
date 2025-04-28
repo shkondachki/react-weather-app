@@ -4,13 +4,17 @@
 .card {
   background: $white;
   padding: 1rem;
-  border-radius: $radius-medium;
-  text-align: center;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: $radius-large;
   transition: transform 0.3s;
+  height: 100%;
 
   &.sm {
+    & {
+      text-align: center;
+    }
+
     .title {
+      font-size: 15px;
       font-weight: 500;
     }
 
@@ -28,10 +32,15 @@
   }
 
   &.lg {
+    & {
+      padding: 25px 30px;
+      min-height: 170px;
+    }
+
     .title {
       font-size: 16px;
       font-weight: 500;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: $gray;
     }
 
@@ -39,6 +48,39 @@
       font-size: 35px;
       line-height: 1.3em;
       font-weight: 400;
+    }
+
+    small {
+      font-size: 20px;
+      margin-left: 4px;
+      position: relative;
+      top: -10px;
+    }
+
+    &.clouds {
+      h4 {
+        font-size: 20px;
+      }
+    }
+
+    &.sunsetSunrise {
+      .inner {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 26px;
+          background: $orange;
+          border-radius: 50px;
+          padding: 7px;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 

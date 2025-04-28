@@ -1,0 +1,53 @@
+// _mixins.scss
+@use './variables' as *;
+
+// ----- "AND BELOW" mixins -----
+@mixin mobile-and-below {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet-and-below {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop-and-below {
+  @media (max-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// ----- "AND ABOVE" mixins -----
+@mixin mobile-and-above {
+  @media (min-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet-and-above {
+  @media (min-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop-and-above {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@mixin large-desktop-and-above {
+  @media (min-width: #{$breakpoint-large-desktop}) {
+    @content;
+  }
+}
+
+// ----- "BETWEEN" mixins (optional but handy) -----
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}

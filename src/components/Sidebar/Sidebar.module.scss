@@ -1,5 +1,6 @@
 // Sidebar.module.scss
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .sidebar {
   background-color: $white;
@@ -7,7 +8,9 @@
 
   .currentWeather {
     img {
-      width: 280px;
+      @include desktop-and-above {
+        width: 280px;
+      }
     }
 
     .currentTemp {
