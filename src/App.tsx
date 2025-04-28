@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { fetchWeather, fetchForecast, WeatherData, ForecastItem } from "./api/weather";
 import styles from "./App.module.scss";
-import {Sidebar} from "./components/Sidebar.tsx";
-import {MainView} from "./components/MainView.tsx";
+import {Sidebar} from "./components/Sidebar/Sidebar.tsx";
+import {MainView} from "./components/MainView/MainView.tsx";
 
 function App() {
     const [city, setCity] = useState("Sofia");

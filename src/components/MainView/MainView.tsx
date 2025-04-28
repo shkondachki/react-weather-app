@@ -1,8 +1,8 @@
 import styles from "./MainView.module.scss";
-import cardStyles from "./Card.module.scss";
+import cardStyles from "../Card/Card.module.scss";
 import {motion} from "framer-motion";
-import {ForecastItem, WeatherData} from "../api/weather.ts";
-import {Card} from "./Card.tsx";
+import {ForecastItem, WeatherData} from "../../api/weather.ts";
+import {Card} from "../Card/Card.tsx";
 
 interface MainViewProps {
     forecast: ForecastItem[];

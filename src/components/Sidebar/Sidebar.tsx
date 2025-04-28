@@ -1,7 +1,7 @@
 import styles from "./Sidebar.module.scss";
 import {motion} from "framer-motion";
-import {SearchLocation} from "./SearchLocation.tsx";
-import {WeatherData} from "../api/weather.ts";
+import {SearchLocation} from "../SearchLocation/SearchLocation.tsx";
+import {WeatherData} from "../../api/weather.ts";
 
 interface SidebarProps {
     city: string;

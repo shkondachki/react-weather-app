@@ -1,5 +1,5 @@
 import styles from "./SearchLocation.module.scss";
-import searchIcon from "../assets/search.svg"
+import searchIcon from "../../assets/search.svg"
 
 interface SearchLocationProps {
     city: string;
