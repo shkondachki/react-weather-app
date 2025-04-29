@@ -10,9 +10,10 @@ import Flag from "react-world-flags";
 interface MainViewProps {
     forecast: ForecastItem[];
     weather: WeatherData | null;
+    dataVersion: number;
 }
 
-export const MainView = ({ forecast, weather }: MainViewProps) => {
+export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
     if (!weather) return null;
 
     // Country Flag
@@ -62,7 +63,7 @@ export const MainView = ({ forecast, weather }: MainViewProps) => {
                         <div className={styles.forecastGrid}>
                             {forecast.map((item, index) => (
                                 <motion.div
-                                    key={item.date}
+                                    key={dataVersion + "-" + item.date}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
@@ -96,7 +97,7 @@ export const MainView = ({ forecast, weather }: MainViewProps) => {
                     <div className={styles.cards}>
                         {highlights.map((item, index) => (
                             <motion.div
-                                key={item.title}
+                                key={dataVersion + "-" + item.title}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}

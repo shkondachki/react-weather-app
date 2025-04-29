@@ -36,8 +36,6 @@ export const fetchWeather = async (city: string): Promise<WeatherData> => {
 
     const data = await res.json();
 
-    console.log(data);
-
     return {
         city: data.name,
         country: data.sys.country,

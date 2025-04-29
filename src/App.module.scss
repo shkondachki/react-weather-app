@@ -1,22 +1,23 @@
 // App.module.scss
 @use './styles/variables' as *;
+@use './styles/mixins' as *;
 
 /* General page layout */
 .app {
   width: 100%;
-  //max-width: 600px;
-  //margin: 2rem auto;
   background: $white;
-  //border-radius: $radius-large;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   min-height: 100vh;
 
-  //&.withCity {
-  //  max-width: 1200px;
+
+  @include mobile-and-above {
     display: grid;
+  }
+
+  @include tablet-and-above {
     grid-template-columns: 1fr 3fr;
-  //}
+  }
 }
 
 

@@ -1,5 +1,6 @@
 // Card.module.scss
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .card {
   background: $white;
@@ -29,12 +30,24 @@
         color: $gray;
       }
     }
+
+    @include mobile-and-below {
+      img {
+        width: 50px;
+      }
+    }
   }
 
   &.lg {
     & {
-      padding: 25px 30px;
-      min-height: 170px;
+      @include tablet-and-above {
+        padding: 25px 30px;
+        min-height: 170px;
+      }
+
+      @include tablet-and-below {
+        padding: 15px;
+      }
     }
 
     .title {
@@ -48,6 +61,10 @@
       font-size: 35px;
       line-height: 1.3em;
       font-weight: 400;
+
+      @include tablet-and-below {
+        font-size: 25px;
+      }
     }
 
     small {
@@ -55,6 +72,10 @@
       margin-left: 4px;
       position: relative;
       top: -10px;
+
+      @include tablet-and-below {
+        font-size: 15px;
+      }
     }
 
     &.clouds {
@@ -75,10 +96,19 @@
           background: $orange;
           border-radius: 50px;
           padding: 7px;
+
+          @include tablet-and-below {
+            width: 22px;
+            padding: 6px;
+          }
         }
 
         &:not(:last-child) {
           margin-bottom: 10px;
+
+          @include tablet-and-below {
+            margin-bottom: 5px;
+          }
         }
       }
     }

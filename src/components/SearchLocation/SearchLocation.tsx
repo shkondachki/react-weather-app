@@ -34,7 +34,7 @@ export const SearchLocation = ({
                 </button>
             </div>
 
-            {error && <p className={styles.error}>{error}</p>}
+            {error && <p className={styles.error} aria-live="polite">{error}</p>}
         </>
     )
 }
