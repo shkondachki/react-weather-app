@@ -2,7 +2,3 @@
 @use './variables' as *;
 @use './mixins' as *;
 @use './reset' as *;
-
-body {
-  background-color: $gray-dark;
-}
