@@ -6,6 +6,7 @@ import { Card } from "../Card/Card.tsx";
 import arrowUp from "../../assets/arrowUp.svg";
 import arrowDown from "../../assets/arrowDown.svg";
 import Flag from "react-world-flags";
+import {ThemeToggleButton} from "../ThemeToggleButton/ThemeToggleButton.tsx";
 
 interface MainViewProps {
     forecast: ForecastItem[];
@@ -54,8 +55,17 @@ export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
                 {forecast.length > 0 && (
                     <>
                         <div className={styles.topNav}>
-                            <h2 className={styles.city}><CountryFlag countryCode={weather.country} /> {weather.city} </h2>
-                            <div className={styles.symbol}>°C</div>
+                            <h2 className={styles.city}>
+                                <CountryFlag countryCode={weather.country} /> {weather.city}
+                            </h2>
+
+                            <div className={styles.togglers}>
+                                <ThemeToggleButton/>
+
+                                <Card size={'sm'}>
+                                    <div className={styles.symbol}>°C</div>
+                                </Card>
+                            </div>
                         </div>
 
                         <h3 className={styles.cardsTitle}>5-Day Forecast</h3>
@@ -70,7 +80,7 @@ export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
                                 >
                                     <Card
                                         title={new Date(item.date).toLocaleDateString(undefined, { weekday: "short" })}
-                                        size="sm"
+                                        size="md"
                                     >
                                         <img
                                             src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}

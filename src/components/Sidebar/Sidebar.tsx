@@ -35,7 +35,7 @@ export const Sidebar = ( {
                     transition={{ duration: 0.5 }}
                 >
                     <img
-                        src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                        src={`https://openweathermap.org/img/wn/${weather.icon}@4x.png`}
                         alt={weather.description}
                     />
                     <h3 className={styles.currentTemp}>{Math.round(weather.temperature)}°</h3>

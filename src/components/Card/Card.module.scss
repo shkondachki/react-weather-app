@@ -3,13 +3,26 @@
 @use '../../styles/mixins' as *;
 
 .card {
-  background: $white;
-  padding: 1rem;
+  background: var(--bg-color-primary);
   border-radius: $radius-large;
-  transition: transform 0.3s;
   height: 100%;
+  @include theme-transition();
 
+  // Small
   &.sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-circle;
+    padding: 5px;
+    height: 38px;
+    width: 38px;
+  }
+
+  // Medium
+  &.md {
+    padding: 1rem;
+
     & {
       text-align: center;
     }
@@ -38,6 +51,7 @@
     }
   }
 
+  // Large
   &.lg {
     & {
       @include tablet-and-above {
@@ -113,8 +127,4 @@
       }
     }
   }
-
-
-
-
 }

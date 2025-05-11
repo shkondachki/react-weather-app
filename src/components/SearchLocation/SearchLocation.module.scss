@@ -1,5 +1,6 @@
 // SearchLocation.module.scss
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 /* Search area */
 h1 {
@@ -21,9 +22,13 @@ h1 {
     border-bottom: 1px solid $gray;
     outline: none;
     transition: all 0.2s ease-in-out;
+    background-color: var(--bg-color-primary);
+    color: var(--text-color-primary);
+
+    @include theme-transition();
 
     &:focus {
-      border-color: $primary-dark;
+      border-color: var(--text-color-primary);
     }
   }
 

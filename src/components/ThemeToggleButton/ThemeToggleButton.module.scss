@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.toggleButton {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: inline-block;
+
+  .toggleCheckbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  .iconWrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //width: 20px;
+    //height: 20px;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045), transform 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    pointer-events: none;
+
+    &.sun {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &.moon {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5) rotate(-90deg);
+    }
+  }
+
+  .toggleCheckbox:checked ~ .iconWrapper.sun {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(90deg);
+  }
+
+  .toggleCheckbox:checked ~ .iconWrapper.moon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+

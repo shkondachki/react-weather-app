@@ -51,3 +51,12 @@
     @content;
   }
 }
+
+// Theme Transition
+@mixin theme-transition() {
+  transition:
+          background-color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+          background       0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+          color            0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+          border           0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}

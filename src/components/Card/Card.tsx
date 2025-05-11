@@ -4,8 +4,8 @@ import {ReactNode} from "react";
 
 interface CardProps {
     children: ReactNode;
-    title: string;
-    size: 'lg' | 'sm';
+    title?: string;
+    size: 'lg' | 'md' | 'sm';
     className?: string;
 }
 

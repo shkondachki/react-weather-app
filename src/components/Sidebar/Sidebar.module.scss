@@ -3,8 +3,9 @@
 @use '../../styles/mixins' as *;
 
 .sidebar {
-  background-color: $white;
+  background-color: var(--bg-color-primary);
   padding: 40px 40px 40px;
+  @include theme-transition();
 
   @include mobile-and-below {
     padding: 30px 30px;
@@ -13,7 +14,7 @@
   .currentWeather {
     img {
       @include desktop-and-above {
-        width: 280px;
+        //width: 280px;
       }
     }
 

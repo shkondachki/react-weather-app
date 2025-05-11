@@ -4,7 +4,9 @@
 
 .main {
   padding: 40px 45px 50px;
-  background: $gray-lighter;
+  background: var(--bg-color-secondary);
+
+  @include theme-transition();
 
   @include mobile-and-below {
     padding: 30px 20px;
@@ -26,7 +28,7 @@
     }
 
     .city {
-      font-size: 31px;
+      font-size: 30px;
       line-height: 1.3em;
       font-weight: 400;
       display: flex;
@@ -47,11 +49,23 @@
 
     }
 
-    .symbol {
-      font-size: 20px;
-      line-height: 1.3em;
-      font-weight: 600;
+    .togglers {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @include mobile-and-below {
+        gap: 10px;
+      }
+
+      .symbol {
+        font-size: 18px;
+        line-height: 1.3em;
+        font-weight: 400;
+      }
     }
+
+
   }
 
   .cardsTitle {
