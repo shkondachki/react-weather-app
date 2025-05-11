@@ -17,6 +17,10 @@
     padding: 5px;
     height: 38px;
     width: 38px;
+
+    &:hover {
+      background: var(--bg-color-secondary);
+    }
   }
 
   // Medium

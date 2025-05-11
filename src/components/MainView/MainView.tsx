@@ -7,6 +7,10 @@ import arrowUp from "../../assets/arrowUp.svg";
 import arrowDown from "../../assets/arrowDown.svg";
 import Flag from "react-world-flags";
 import {ThemeToggleButton} from "../ThemeToggleButton/ThemeToggleButton.tsx";
+import {convertTemperature} from "../../utils/convertTemperature.tsx";
+import {useContext} from "react";
+import {DegreeUnitContext} from "../../context/DegreeUnitContext.tsx";
+import {UnitToggleButton} from "../UnitToggleButton/UnitToggleButton.tsx";
 
 interface MainViewProps {
     forecast: ForecastItem[];
@@ -15,6 +19,8 @@ interface MainViewProps {
 }
 
 export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
+    const { unit } = useContext(DegreeUnitContext);
+
     if (!weather) return null;
 
     // Country Flag
@@ -42,7 +48,7 @@ export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
 
     // Highlights
     const highlights = [
-        { title: "Feels Like",  value: <>{Math.round(weather.feelsLike)}°</> },
+        { title: "Feels Like",  value: <>{Math.round(convertTemperature(weather.feelsLike, unit))}°</> },
         { title: "Humidity",    value: <>{weather.humidity}<small>%</small></> },
         { title: "Clouds",      value: <>{getCloudDescription(weather.clouds)}</> , className: 'clouds'},
         { title: "Visibility",  value: <>{weather.visibility}<small>m</small></> },
@@ -61,10 +67,7 @@ export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
 
                             <div className={styles.togglers}>
                                 <ThemeToggleButton/>
-
-                                <Card size={'sm'}>
-                                    <div className={styles.symbol}>°C</div>
-                                </Card>
+                                <UnitToggleButton/>
                             </div>
                         </div>
 
@@ -88,10 +91,10 @@ export const MainView = ({ forecast, weather, dataVersion }: MainViewProps) => {
                                         />
                                         <h5 className={cardStyles.temps}>
                                             <span className={cardStyles.tempMax}>
-                                              {Math.round(item.tempMax)}°
+                                                {Math.round(convertTemperature(item.tempMax, unit))}°
                                             </span>
                                             <span className={cardStyles.tempMin}>
-                                              {Math.round(item.tempMin)}°
+                                                {Math.round(convertTemperature(item.tempMin, unit))}°
                                             </span>
                                         </h5>
                                     </Card>
